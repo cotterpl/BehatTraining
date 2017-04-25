@@ -1,0 +1,22 @@
+<table class="table table-striped table-hover table-movie-list">
+    <thead>
+    <tr>
+        <th>title</th>
+        <th>year</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    /** @var \Acme\Entity\Movie $result */
+    foreach ($movieList as $result) { ?>
+    <tr class="tr-movie">
+        {% for movie in movieList %}
+            <tr>
+                <td><a href="/movie/{{ movie.id }}">{{ movie.title }}</a></td>
+                <td>{{ movie.year }}</td>
+            </tr>
+        {% endfor %}
+    </tr>
+    <?php } ?>
+    </tbody>
+</table>

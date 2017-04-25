@@ -1,0 +1,38 @@
+#
+# behat.yml
+#
+default:
+  suites:
+    default:
+      paths:
+        - %paths.base%/features/integration
+      contexts:
+        - Acme\Tests\AppContext
+        - Acme\Tests\Integration\SearchContext
+    ui:
+      paths:
+        - %paths.base%/features/ui
+      contexts:
+        - Acme\Tests\AppContext
+        - Acme\Tests\Ui\MovieListContext
+    api:
+      paths:
+        - %paths.base%/features/api
+      contexts:
+        - Acme\Tests\AppContext
+        - Imbo\BehatApiExtension\Context\ApiContext
+        - Acme\Tests\Api\MovieContext
+  extensions:
+    Behat\MinkExtension:
+      browser_name: chrome
+      sessions:
+        nonjavascript:
+          goutte:
+            guzzle_parameters:
+              verify: false
+        javascript:
+          selenium2: ~
+      base_url:  'http://behat-training.dev'
+    Imbo\BehatApiExtension:
+      apiClient:
+        base_uri: 'http://behat-training.dev'
