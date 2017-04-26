@@ -65,7 +65,7 @@ class DbService
         $this->getPDO()->query("CREATE DATABASE acme");
         $this->getPDO()->query('USE acme');
         $this->getPDO()->exec(file_get_contents($this->dbImportsPath.'/acme.sql'));
-        $this->connect(); //reconnect to be sure the acme.sql settings do not interfere with out connection
+        $this->setup(); //reconnect to be sure the acme.sql settings do not interfere with our connection
     }
 
     /**
