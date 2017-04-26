@@ -5,10 +5,15 @@ namespace Acme\Controller\Api;
 use Acme\Controller\AbstractController;
 use Acme\Entity\Movie;
 
+/**
+ * API controller for movies
+ *
+ * @package Acme\Controller\Api
+ */
 class MovieController extends AbstractController
 {
     /**
-     * Index action
+     * GET movie end-point action
      *
      * @param  \Psr\Http\Message\ServerRequestInterface $req  PSR7 request
      * @param  \Psr\Http\Message\ResponseInterface      $res  PSR7 response

@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Tests\Fixture;
+namespace Acme\Tests\Generator;
 
 use Acme\Entity\Movie;
 use Faker;
@@ -10,7 +10,7 @@ use Faker;
  *
  * @package Acme\Tests\Fixture
  */
-class MovieFixture
+class MovieGenerator
 {
     /**
      * Generates movies based on the fixed data

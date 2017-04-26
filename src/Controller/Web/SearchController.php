@@ -6,10 +6,15 @@ use Acme\Controller\AbstractController;
 use Acme\Service\MovieService;
 use Interop\Container\ContainerInterface;
 
+/**
+ * Controller handling movie searching.
+ *
+ * @package Acme\Controller\Web
+ */
 class SearchController extends AbstractController
 {
     /**
-     * Search action
+     * Search page
      *
      * @param  \Psr\Http\Message\ServerRequestInterface $req  PSR7 request
      * @param  \Psr\Http\Message\ResponseInterface      $res  PSR7 response

@@ -4,6 +4,11 @@ namespace Acme\Controller\Web;
 
 use Acme\Controller\AbstractController;
 
+/**
+ * Home page controller
+ *
+ * @package Acme\Controller\Web
+ */
 class IndexController extends AbstractController
 {
     /**

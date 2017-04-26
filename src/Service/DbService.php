@@ -2,6 +2,11 @@
 
 namespace Acme\Service;
 
+/**
+ * Base service for DB communication
+ *
+ * @package Acme\Service
+ */
 class DbService
 {
     /** @var \PDO */
@@ -13,6 +18,15 @@ class DbService
     private $password;
     private $dbImportsPath;
 
+    /**
+     * DbService constructor.
+     *
+     * @param string $host
+     * @param string $dbName
+     * @param string $user
+     * @param string $password
+     * @param string $dbImportsPath Path to directory containing database dump files
+     */
     function __construct($host, $dbName, $user, $password, $dbImportsPath)
     {
         $this->host = $host;
@@ -21,10 +35,13 @@ class DbService
         $this->password = $password;
         $this->dbImportsPath = $dbImportsPath;
 
-        $this->connect();
+        $this->setup();
     }
 
-    private function connect()
+    /**
+     * Set up PDO
+     */
+    private function setup()
     {
         $this->pdo = new \PDO("mysql:dbname=$this->dbName;host=$this->host",$this->user, $this->password);
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -37,6 +54,11 @@ class DbService
         return $this->pdo;
     }
 
+    /**
+     * Revert DB to initial state.
+     *
+     * This method will erase existing DB!
+     */
     public function resetDb()
     {
         $this->getPDO()->query("DROP DATABASE acme");
@@ -46,6 +68,12 @@ class DbService
         $this->connect(); //reconnect to be sure the acme.sql settings do not interfere with out connection
     }
 
+    /**
+     * @param       $statement
+     * @param array $params
+     *
+     * @return bool
+     */
     public function execute($statement, $params = []) {
         $stmt = $this->getPDO()->prepare($statement);
         return $stmt->execute($params);

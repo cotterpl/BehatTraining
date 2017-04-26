@@ -3,13 +3,16 @@
 namespace Acme\Controller\Web;
 
 use Acme\Controller\AbstractController;
-use Acme\Service\MovieService;
-use Interop\Container\ContainerInterface;
 
+/**
+ * Controller for movie related pages
+ *
+ * @package Acme\Controller\Web
+ */
 class MovieController extends AbstractController
 {
     /**
-     * Search action
+     * Single movie page
      *
      * @param  \Psr\Http\Message\ServerRequestInterface $req  PSR7 request
      * @param  \Psr\Http\Message\ResponseInterface      $res  PSR7 response

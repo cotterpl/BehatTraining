@@ -5,7 +5,12 @@ namespace Acme\Tests\Ui;
 use Behat\MinkExtension\Context\MinkContext;
 use PHPUnit\Framework\Assert;
 
-class MovieListContext extends MinkContext
+/**
+ * Class HomePageContext
+ *
+ * @package Acme\Tests\Ui
+ */
+class HomePageContext extends MinkContext
 {
     /**
      * @When Visitor goes to Home Page

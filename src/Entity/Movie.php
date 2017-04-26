@@ -2,6 +2,11 @@
 
 namespace Acme\Entity;
 
+/**
+ * Movie entity
+ *
+ * @package Acme\Entity
+ */
 class Movie
 {
     /** @var int */
@@ -81,62 +86,5 @@ class Movie
     {
         return $this->imdbId;
     }
-
-    /**
-     * @param int $id
-     *
-     * @return Movie
-     */
-    public function setId(int $id): Movie
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @param mixed $title
-     *
-     * @return Movie
-     */
-    public function setTitle($title): self
-    {
-        $this->title = $title;
-        return $this;
-    }
-
-    /**
-     * @param int $year
-     *
-     * @return Movie
-     */
-    public function setYear(int $year): Movie
-    {
-        $this->year = $year;
-        return $this;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return Movie
-     */
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-        return $this;
-    }
-
-    /**
-     * @param string $imdbId
-     *
-     * @return Movie
-     */
-    public function setImdbId(string $imdbId): self
-    {
-        $this->imdbId = $imdbId;
-        return $this;
-    }
-
-
 }
 

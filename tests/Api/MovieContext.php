@@ -4,7 +4,7 @@ namespace Acme\Tests\Api;
 
 use Acme\Entity\Movie;
 use Acme\Tests\AppContext;
-use Acme\Tests\Fixture\MovieFixture;
+use Acme\Tests\Generator\MovieGenerator;
 use Behat\Behat\Context\Context;
 
 /**
@@ -21,7 +21,7 @@ class MovieContext implements Context
      */
     public function thereIsAMovieWithId($title, $id)
     {
-        $movie = MovieFixture::generateFakeMovieFrom(['id'=>$id, 'title' => $title]);
+        $movie = MovieGenerator::generateFakeMovieFrom(['id'=>$id, 'title' => $title]);
         $movie = AppContext::app()->getContainer()->movieService->create($movie);
         return $movie;
     }

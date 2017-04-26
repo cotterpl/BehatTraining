@@ -6,6 +6,11 @@ use Acme\Controller\AbstractController;
 use Acme\Entity\Movie;
 use Acme\Middleware\AuthMiddleware;
 
+/**
+ * User API authentication Controller
+ *
+ * @package Acme\Controller\Api
+ */
 class AuthController extends AbstractController
 {
     /**

@@ -7,9 +7,19 @@ use Behat\Behat\Context\Context;
 
 require 'vendor/autoload.php';
 
+/**
+ * Application Context that ensures Acme application is available.
+ * It also handles @db-reset tag
+ *
+ * Typical usage:
+ * $app = AppContext::app();
+ *
+ * @package Acme\Tests
+ */
 class AppContext implements Context
 {
-    private static $app;
+    /** @var App */
+    private static $app = null;
 
     /**
      * Use this to access application in tests
@@ -27,9 +37,10 @@ class AppContext implements Context
     /**
      * @BeforeFeature
      */
-    public static function renewApp()
+    public static function resetApp()
     {
-        self::createApp(); //make sure new suite receives fresh instance of app
+        //get rid of application so that new feature receives new instance
+        self::$app = null;
     }
 
     /**

@@ -5,7 +5,12 @@ namespace Acme\Controller;
 use Acme\Service\MovieService;
 use Interop\Container\ContainerInterface;
 
-class AbstractController
+/**
+ * Base class for controllers
+ *
+ * @package Acme\Controller
+ */
+abstract class AbstractController
 {
     /** @var  ContainerInterface */
     private $container;

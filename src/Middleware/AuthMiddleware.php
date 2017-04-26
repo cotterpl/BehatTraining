@@ -5,10 +5,15 @@ namespace Acme\Middleware;
 use GuzzleHttp\Middleware;
 use Slim\MiddlewareAwareTrait;
 
+/**
+ * Handles autrhorization related features
+ *
+ * @package Acme\Middleware
+ */
 class AuthMiddleware {
 
     /**
-     * Auth middleware
+     * Checks if user is authenticated. Used for protected routes.
      *
      * @param  \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param  \Psr\Http\Message\ResponseInterface      $response PSR7 response
@@ -26,7 +31,15 @@ class AuthMiddleware {
         return $response->withStatus(401);
     }
 
-    public function signIn($username, $password) {
+    /**
+     * Tries to sign user in
+     *
+     * @param string $username User name
+     * @param string $password Plain password
+     *
+     * @return bool True on success
+     */
+    public function signIn(string $username, string $password) {
         if ($username === 'acme' && $password === 'AcmePass') {
             session_regenerate_id();
             $_SESSION['identity'] = $username;
@@ -35,6 +48,9 @@ class AuthMiddleware {
         return false;
     }
 
+    /**
+     * Signs user out
+     */
     public function signOut() {
         unset($_SESSION['identity']);
         session_regenerate_id();
