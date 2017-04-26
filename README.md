@@ -1,63 +1,43 @@
-# Install application
+# Behat Training
 
 ## Prerequisites
 
-1. Docker (if you are installing with docker)
-1. Google Chrome browser
-1. chromedriver
+1. Clone this project https://github.com/cotterpl/BehatTraining
+1. Install VirtualBox
+1. Download Linux Image from https://drive.google.com/open?id=0BwLw7ZcvI2O3LV9GVmJjZVNqalE
 
-## With docker
+## Set up:
 
-1. Install docker
-1. Make sure port 80 is not used (for example by your local apache instance)
-1. Run sudo ./create_docker.sh
-1. Go to web browser http://localhost/
+1. Add Linux image to VirtualBox
+1. Set up shared folder in VirtualBox: 
+    - name it ‘BehatTraining’ (see `shared_folder.png`) 
+    - it should be pointing to the main directory of the project (the directory this file is in)
+1. Run Ubuntu image (guest system)
+    - login: behat, password: behatpass
+   
+## Inside guest system:
+   
+1. Check if your folder is shared (`cd /var/www/training & ls`)
+    - If not try running `~/mountBehatTraining.sh`
+    - If it does not help check VirtualBox settings for shared folder and restart
+    
+1. `cd /var/www/tranining` and run `./install.sh`. It will install composer and run it.
+   
+1. Run browser and go to `http://behat-training.dev/` – application should show
 
-## Without docker
-
-1. You will need PHP 7.0+, web server and MySQL server
-1. Point web server to src/public directory
-1. If page is accessible under http://localhost/ you don't need to do anything else
-1. Otherwise change configurations in behat.yml and app.yml.
-
-## Test
-
-You should be able to access application at http://localhost/
-
-# Configuration
-
-1. behat.yml
-1. selenium
-1. chromedriver
-1. composer
+1. In a separate terminal window run `selenium-server-standalone`. Leave it running. It is required for UI testing.
 
 # Running tests
+   
+1. `cd /var/www/training` and run `behat`
+   3 tests should pass. One of them should fail.
+   
+Play with the behat command:
+1. `behat --suite default` to run integration tests only
+1. `behat --suite api` to run API tests only
+1. `behat --suite ui` to run UI tests only
+1. `behat features/ui/LatestMovies.feature` to run that feature only
+  
+# Other
 
-To go inside container and switch to project directory
-```bash
-sudo docker exec -it app bash
-cd /var/www/html
-```
-
-From inside container run
-
-1. API tests: `./vendor/bin/behat --suite api`
-1. Integration tests: `./vendor/bin/behat --suite default` - integration tests form default suite
-
-From you machine, against container run:
-
-1. UI tests: `./vendor/bin/behat --suite ui`
-
-# Clean-up
-
-1. Run `sudo ./destroy_docker.sh`
-
-TODO
-remove phpMyAdmin
-
-
-README2
-
-mount in virtualbox
-
-
+- You can use phpMyAdmin at `http://phpmyadmin.dev/`

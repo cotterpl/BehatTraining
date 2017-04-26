@@ -13,7 +13,6 @@ default:
       paths:
         - %paths.base%/features/ui
       contexts:
-        - Acme\Tests\AppContext
         - Acme\Tests\Ui\MovieListContext
     api:
       paths:

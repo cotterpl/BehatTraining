@@ -6,17 +6,11 @@
     </tr>
     </thead>
     <tbody>
-    <?php
-    /** @var \Acme\Entity\Movie $result */
-    foreach ($movieList as $result) { ?>
-    <tr class="tr-movie">
-        {% for movie in movieList %}
-            <tr>
-                <td><a href="/movie/{{ movie.id }}">{{ movie.title }}</a></td>
-                <td>{{ movie.year }}</td>
-            </tr>
-        {% endfor %}
-    </tr>
-    <?php } ?>
+    {% for movie in movieList %}
+        <tr class="tr-movie">
+            <td><a href="/movie/{{ movie.id }}">{{ movie.title }}</a></td>
+            <td>{{ movie.year }}</td>
+        </tr>
+    {% endfor %}
     </tbody>
 </table>
