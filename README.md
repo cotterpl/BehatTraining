@@ -23,7 +23,7 @@
     
 1. `cd /var/www/tranining` and run `./build.sh`. It will install composer and run it.
    
-1. Run browser and go to `http://behat-training.dev/` – application should show
+1. Run browser and go to http://behat-training.dev/ – application should show
 
 1. In a separate terminal window run `selenium-server-standalone`. Leave it running. It is required for UI testing.
 
@@ -40,4 +40,4 @@ Play with the behat command:
   
 # Other
 
-- You can use phpMyAdmin at `http://phpmyadmin.dev/`
+- You can use phpMyAdmin at http://phpmyadmin.dev/
