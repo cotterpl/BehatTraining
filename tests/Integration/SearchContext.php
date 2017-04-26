@@ -37,6 +37,10 @@ class SearchContext implements Context
             throw new \LogicException("Expected movie service to be instantiated first.");
         }
         $this->searchResult = $this->movieService->search($name);
+        Assert::assertTrue(is_array($this->searchResult), "Expected search results to be in array.");
+        foreach ($this->searchResult as $result) {
+            Assert::assertTrue($result instanceof Movie, "Expected movies only");
+        }
     }
 
     /**

@@ -3,8 +3,8 @@
 ## Prerequisites
 
 1. Clone this project https://github.com/cotterpl/BehatTraining
-1. Install VirtualBox
-1. Download Linux Image from https://drive.google.com/open?id=0BwLw7ZcvI2O3LV9GVmJjZVNqalE
+1. Install VirtualBox (if you don't have one already)
+1. Download Linux Image from https://drive.google.com/open?id=0BwLw7ZcvI2O3OVEwOWhwNVltbk0
 
 ## Set up:
 
@@ -21,7 +21,7 @@
     - If not try running `~/mountBehatTraining.sh`
     - If it does not help check VirtualBox settings for shared folder and restart
     
-1. `cd /var/www/tranining` and run `./install.sh`. It will install composer and run it.
+1. `cd /var/www/tranining` and run `./build.sh`. It will install composer and run it.
    
 1. Run browser and go to `http://behat-training.dev/` – application should show
 

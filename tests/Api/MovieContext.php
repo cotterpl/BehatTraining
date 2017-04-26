@@ -7,6 +7,11 @@ use Acme\Tests\AppContext;
 use Acme\Tests\Fixture\MovieFixture;
 use Behat\Behat\Context\Context;
 
+/**
+ * Context for movies
+ *
+ * @package Acme\Tests\Api
+ */
 class MovieContext implements Context
 {
     /**
