@@ -35,7 +35,7 @@ class AppContext implements Context
     /**
      * @BeforeFeature @db-reset
      */
-    public static function beforeSuite()
+    public static function dbReset()
     {
 
         self::app()->getContainer()->dbService->resetDb();

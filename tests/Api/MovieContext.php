@@ -11,11 +11,14 @@ class MovieContext implements Context
 {
     /**
      * @Given There is a movie :title with id :id
+     *
+     * @return Movie
      */
     public function thereIsAMovieWithId($title, $id)
     {
         $movie = MovieFixture::generateFakeMovieFrom(['id'=>$id, 'title' => $title]);
-        AppContext::app()->getContainer()->movieService->create(new Movie($movie));
+        $movie = AppContext::app()->getContainer()->movieService->create($movie);
+        return $movie;
     }
 }
 

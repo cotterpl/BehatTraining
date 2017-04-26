@@ -36,7 +36,7 @@ Play with the behat command:
 1. `behat --suite default` to run integration tests only
 1. `behat --suite api` to run API tests only
 1. `behat --suite ui` to run UI tests only
-1. `behat features/ui/LatestMovies.feature` to run that feature only
+1. `behat --suite ui features/ui/LatestMovies.feature` to run that feature only
   
 # Other
 

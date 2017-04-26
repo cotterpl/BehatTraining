@@ -28,6 +28,15 @@ class AuthController extends AbstractController
         return $res->withStatus(401);
     }
 
+    /**
+     * API sign out action
+     *
+     * @param  \Psr\Http\Message\ServerRequestInterface $req  PSR7 request
+     * @param  \Psr\Http\Message\ResponseInterface      $res  PSR7 response
+     * @param  array                                    $args Route parameters
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function delete($req, $res, $args) {
         $auth = new AuthMiddleware();
         $auth->signOut();

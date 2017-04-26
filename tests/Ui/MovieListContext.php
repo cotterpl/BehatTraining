@@ -12,11 +12,10 @@ class MovieListContext extends MinkContext
      */
     public function visitorGoesToHomePage()
     {
-        $this->visitPath('/');
+        $this->visitPath(Page\HomePage::PATH);
         $homePage = new Page\HomePage($this->getSession()->getPage());
-        if (!$homePage->verify()) {
-            throw new  \LogicException("Expected to start on home page");
-        }
+
+        Assert::assertTrue($homePage->verify(), "Expected to visit home page but didn't");
     }
 
     /**

@@ -10,6 +10,3 @@ Feature: Latest movies
   Scenario: Show 3 latest movies at home page
     When Visitor goes to Home Page
     Then He should see 3 latest movies
-
-
-  #todo (task 1): try to write a scenario that covers for a search query that shouldn't produce any results

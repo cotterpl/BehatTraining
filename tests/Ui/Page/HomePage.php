@@ -5,6 +5,8 @@ namespace Acme\Tests\Ui\Page;
 
 class HomePage extends AbstractPage
 {
+    const PATH = '/';
+
     public function countLatestMovies()
     {
         $result = $this->getPageNode()->findAll('css', '.table-movie-list .tr-movie');

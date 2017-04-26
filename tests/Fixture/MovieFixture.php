@@ -2,34 +2,38 @@
 
 namespace Acme\Tests\Fixture;
 
+use Acme\Entity\Movie;
 use Faker;
 
+/**
+ * Provides movies for tests
+ *
+ * @package Acme\Tests\Fixture
+ */
 class MovieFixture
 {
     /**
-     * Generates movies (associative array representation) based on the fixed data
+     * Generates movies based on the fixed data
      *
      * @param array $fixedData Data to generate from
      *
-     * @return array Movies data with each row containing movie as an assoc array
+     * @return Movie[]
      */
     public static function generateFakeMoviesFrom(array $fixedData)
     {
-        $faker = Faker\Factory::create();
-
-        $movieData = [];
+        $movies = [];
         foreach ($fixedData as $row) {
-            $movieData[] = self::generateFakeMovieFrom($row);
+            $movies[] = self::generateFakeMovieFrom($row);
         }
-        return $movieData;
+        return $movies;
     }
 
     /**
-     * Generates one movie (associative array representation) based on the fixed data
+     * Generates one movie based on the fixed data
      *
      * @param array $fixedData Data to generate from
      *
-     * @return array
+     * @return Movie
      */
     public static function generateFakeMovieFrom(array $row)
     {
@@ -44,7 +48,7 @@ class MovieFixture
         ];
         $movie = $row + $movie; //merge provided data on top of generated data
 
-        return $movie;
+        return new Movie($movie);
     }
 }
 

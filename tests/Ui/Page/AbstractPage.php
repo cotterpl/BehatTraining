@@ -3,9 +3,10 @@
 namespace Acme\Tests\Ui\Page;
 
 use Behat\Mink\Element\DocumentElement;
+use Behat\MinkExtension\Context\RawMinkContext;
 
-abstract class AbstractPage {
-
+abstract class AbstractPage
+{
     private $pageNode;
 
     public function __construct(DocumentElement $node)

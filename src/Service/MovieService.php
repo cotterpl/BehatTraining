@@ -6,19 +6,24 @@ use Acme\Entity\Movie;
 
 class MovieService
 {
-    /** @var Movie[] */
-    private $movies = [];
 
     /** @var DbService */
     private $db;
 
+    /**
+     * MovieService constructor.
+     *
+     * @param DbService $db
+     */
     public function __construct(DbService $db)
     {
         $this->db = $db;
     }
 
     /**
-     * @param $movieId Id of movie
+     * Returns movie or null if it can't find one.
+     *
+     * @param int $movieId Id of movie
      *
      * @return Movie|null Movie if found. Null otherwise
      */
@@ -33,9 +38,11 @@ class MovieService
     }
 
     /**
-     * Creates movie
+     * Creates movie.
      *
      * @param Movie $movie The movie data to create
+     *
+     * @return Movie Newly created movie
      */
     public function create(Movie $movie)
     {
@@ -53,7 +60,9 @@ class MovieService
             $movie->getImdbId(),
         ]);
 
-        $movie->setId($this->db->getPDO()->lastInsertId());
+        $id = $this->db->getPDO()->lastInsertId();
+
+        return $this->find($id);
     }
 
     /**
@@ -81,7 +90,7 @@ class MovieService
      */
     public function latestMovies(int $amount): array
     {
-        $stmt = $this->db->getPDO()->prepare("SELECT * FROM movie ORDER BY year DESC LIMIT 0,?");
+        $stmt = $this->db->getPDO()->prepare("SELECT * FROM movie ORDER BY year,id DESC LIMIT 0,?");
         $stmt->bindValue(1, $amount, \PDO::PARAM_INT);
         $stmt->execute();
 
@@ -113,13 +122,14 @@ class MovieService
         return $result;
     }
 
-    public function importFromArray(array $data)
+    /**
+     * Imports movies to DB
+     *
+     * @param Movie[] $movies
+     */
+    public function importMovies(array $movies)
     {
-        $this->movies = [];
-        foreach ($data as $id=>$row) {
-            $this->movies[$row['id']] = new Movie($row);
-        }
-        foreach ($this->movies as $id=>$movie) {
+        foreach ($movies as $id=>$movie) {
             $this->create($movie);
         }
     }

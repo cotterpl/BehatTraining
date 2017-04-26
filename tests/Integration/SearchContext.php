@@ -25,7 +25,7 @@ class SearchContext implements Context
             ['title' => $movie1,], ['title' => $movie2,], ['title' => $movie3,],
         ]);
         $this->movieService = AppContext::app()->getContainer()->movieService;
-        $this->movieService->importFromArray($generatedMovies);
+        $this->movieService->importMovies($generatedMovies);
     }
 
     /**
@@ -50,7 +50,7 @@ class SearchContext implements Context
                 $found = true;
             }
         }
-        Assert::assertTrue($found, "Expected to find movie titled '$title");
+        Assert::assertTrue($found, "Expected to find movie titled '$title'");
     }
 
     /**
@@ -64,7 +64,7 @@ class SearchContext implements Context
                 $found = true;
             }
         }
-        Assert::assertFalse($found, "Expected NOT to find movie titled '$title");
+        Assert::assertFalse($found, "Expected NOT to find movie titled '$title'");
     }
 }
 

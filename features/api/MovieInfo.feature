@@ -15,5 +15,3 @@ Feature: Reading information about a movie
         "title": "Back to the Future"
       }
       """
-
-    #todo cover scenario where the ID of movie is invalid
