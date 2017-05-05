@@ -7,6 +7,6 @@ Feature: Latest movies
   Rules:
   - 3 latest movies should be presented at Home Page
 
-  Scenario: Show 3 latest movies at home page
+  Scenario: Should show 3 latest movies at home page
     When Visitor goes to Home Page
     Then He should see 3 latest movies
