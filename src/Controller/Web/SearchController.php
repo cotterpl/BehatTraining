@@ -3,8 +3,6 @@
 namespace Acme\Controller\Web;
 
 use Acme\Controller\AbstractController;
-use Acme\Service\MovieService;
-use Interop\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -24,7 +22,7 @@ class SearchController extends AbstractController
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function search($req, $res, $args)
+    public function search(Request $req, Response $res, $args)
     {
         $query = $req->getQueryParam('s', null);
         $results = $this->container()['movieService']->search($query);

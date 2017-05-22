@@ -26,7 +26,7 @@ class MovieController extends AbstractController
     public function get(Request $req, Response $res, $args)
     {
         /** @var Movie $movie */
-        $movie = $this->container()['movieService']->find((int)$args['id']);
+        $movie = $this->container()['movieService']->find((int) $args['id']);
         if ($movie) {
             return $res->withJson($movie->toArray());
         }
@@ -40,7 +40,8 @@ class MovieController extends AbstractController
      * @param  array    $args Route parameters
      *
      * @return \Psr\Http\Message\ResponseInterface
-     */function post(Request $req, Response $res, $args)
+     */
+    function post(Request $req, Response $res, $args)
     {
         $data = $req->getParsedBody();
         $movie = $this->container()['movieService']->create(new Movie($data));

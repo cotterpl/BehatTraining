@@ -43,6 +43,7 @@ class App extends \Slim\App
             return new \Acme\Service\MovieService($container->dbService);
         };
 
+        //register twig
         $container['view'] = function ($container) use ($config) {
             $view = new \Slim\Views\Twig($config['ACME_ROOT'] . "/src/view/", [
                 'cache' => false,

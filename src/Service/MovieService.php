@@ -4,6 +4,11 @@ namespace Acme\Service;
 
 use Acme\Entity\Movie;
 
+/**
+ * Handles movies storage
+ *
+ * @package Acme\Service
+ */
 class MovieService
 {
 
@@ -30,7 +35,7 @@ class MovieService
     public function find(int $movieId)
     {
         $stmt = $this->db->getPDO()->prepare("SELECT * FROM movie WHERE id=?");
-        $stmt->execute([(int)$movieId]);
+        $stmt->execute([(int) $movieId]);
         if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             return new Movie($row);
         }
@@ -47,18 +52,22 @@ class MovieService
     public function create(Movie $movie)
     {
         $m = $movie->toArray();
-        $stmt = $this->db->getPDO()->prepare("
+        $stmt = $this->db->getPDO()->prepare(
+            "
             INSERT INTO movie (id, title, `year`, description, imdbId) 
             VALUES(?, ?, ?, ?, ?)
-      ");
+      "
+        );
 
-       $stmt->execute([
-            $movie->getId(),
-            $movie->getTitle(),
-            $movie->getYear(),
-            $movie->getDescription(),
-            $movie->getImdbId(),
-        ]);
+        $stmt->execute(
+            [
+                $movie->getId(),
+                $movie->getTitle(),
+                $movie->getYear(),
+                $movie->getDescription(),
+                $movie->getImdbId(),
+            ]
+        );
 
         $id = $this->db->getPDO()->lastInsertId();
 
@@ -74,11 +83,10 @@ class MovieService
      */
     public function search(string $query): array
     {
-        $query = '%'.$query.'%';
+        $query = '%' . $query . '%';
         $stmt = $this->db->getPDO()->prepare("SELECT * FROM `movie` WHERE `title` LIKE ?");
         $stmt->execute([$query]);
         return $this->arrayToMovies($stmt->fetchAll(\PDO::FETCH_ASSOC));
-
     }
 
     /**
@@ -129,7 +137,7 @@ class MovieService
      */
     public function importMovies(array $movies)
     {
-        foreach ($movies as $id=>$movie) {
+        foreach ($movies as $id => $movie) {
             $this->create($movie);
         }
     }

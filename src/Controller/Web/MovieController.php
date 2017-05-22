@@ -3,6 +3,8 @@
 namespace Acme\Controller\Web;
 
 use Acme\Controller\AbstractController;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * Controller for movie related pages
@@ -14,13 +16,13 @@ class MovieController extends AbstractController
     /**
      * Single movie page
      *
-     * @param  \Psr\Http\Message\ServerRequestInterface $req  PSR7 request
-     * @param  \Psr\Http\Message\ResponseInterface      $res  PSR7 response
-     * @param  array                                    $args Route parameters
+     * @param  Request  $req  PSR7 request
+     * @param  Response $res  PSR7 response
+     * @param  array    $args Route parameters
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function get($req, $res, $args)
+    public function get(Request $req, Response $res, $args)
     {
         $id = $args['id'];
         $movie = $this->container()['movieService']->find($id);

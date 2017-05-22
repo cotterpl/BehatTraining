@@ -5,6 +5,8 @@ namespace Acme\Controller\Api;
 use Acme\Controller\AbstractController;
 use Acme\Entity\Movie;
 use Acme\Middleware\AuthMiddleware;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * User API authentication Controller
@@ -16,13 +18,13 @@ class AuthController extends AbstractController
     /**
      * API sign in action
      *
-     * @param  \Psr\Http\Message\ServerRequestInterface $req  PSR7 request
-     * @param  \Psr\Http\Message\ResponseInterface      $res  PSR7 response
-     * @param  array                                    $args Route parameters
+     * @param  Request  $req  PSR7 request
+     * @param  Response $res  PSR7 response
+     * @param  array    $args Route parameters
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function post($req, $res, $args)
+    public function post(Request $req, Response $res, $args)
     {
         $auth = new AuthMiddleware();
         if ($auth->signIn($req->getParam('login'), $req->getParam('password'))) {
@@ -36,13 +38,14 @@ class AuthController extends AbstractController
     /**
      * API sign out action
      *
-     * @param  \Psr\Http\Message\ServerRequestInterface $req  PSR7 request
-     * @param  \Psr\Http\Message\ResponseInterface      $res  PSR7 response
-     * @param  array                                    $args Route parameters
+     * @param  Request  $req  PSR7 request
+     * @param  Response $res  PSR7 response
+     * @param  array    $args Route parameters
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function delete($req, $res, $args) {
+    public function delete(Request $req, Response $res, $args)
+    {
         $auth = new AuthMiddleware();
         $auth->signOut();
         return $res;

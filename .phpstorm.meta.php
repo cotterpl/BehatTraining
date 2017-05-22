@@ -14,6 +14,7 @@ namespace PHPSTORM_META
             [
                 'movieService' => \Acme\Service\MovieService::class,
                 'dbService'    => \Acme\Service\DbService::class,
+                'view'         => \Slim\Views\Twig::class,
             ]
         )
     );

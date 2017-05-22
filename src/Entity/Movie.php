@@ -26,9 +26,9 @@ class Movie
 
     public function __construct(array $data)
     {
-        $this->id = (array_key_exists('id', $data)) ? (int)$data['id'] : null;
+        $this->id = (array_key_exists('id', $data)) ? (int) $data['id'] : null;
         $this->title = $data['title'];
-        $this->year = (int)$data['year'];
+        $this->year = (int) $data['year'];
         $this->description = $data['description'];
         $this->imdbId = $data['imdbId'];
     }
