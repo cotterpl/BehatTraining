@@ -23,7 +23,7 @@ class MovieController extends AbstractController
     public function get($req, $res, $args)
     {
         $id = $args['id'];
-        $movie = $this->container()->movieService->find($id);
+        $movie = $this->container()['movieService']->find($id);
         if (!$movie) {
             return $res->withStatus(404);
         }

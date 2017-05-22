@@ -71,11 +71,12 @@ class App extends \Slim\App
         $this->get('/api/tokens', AuthController::class . ':post'); //get is here only to make behat training simpler for you
 
         $this->get('/api/tokens/delete', AuthController::class . ':delete'); //get is here only to make behat training simpler for you
-        $this->delete('/api/tokens', AuthController::class, ':delete');
+        $this->delete('/api/tokens', AuthController::class . ':delete');
 
         $group = $this->group(
             '', function () {
             $this->get('/api/movies/{id}', \Acme\Controller\Api\MovieController::class . ':get');
+            $this->post('/api/movies', \Acme\Controller\Api\MovieController::class . ':post');
         }
         );
 

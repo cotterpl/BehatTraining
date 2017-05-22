@@ -9,7 +9,7 @@ namespace Acme\Entity;
  */
 class Movie
 {
-    /** @var int */
+    /** @var int|null */
     private $id;
 
     /** @var string */
@@ -26,7 +26,7 @@ class Movie
 
     public function __construct(array $data)
     {
-        $this->id = (int)$data['id'];
+        $this->id = (array_key_exists('id', $data)) ? (int)$data['id'] : null;
         $this->title = $data['title'];
         $this->year = (int)$data['year'];
         $this->description = $data['description'];
@@ -43,14 +43,14 @@ class Movie
             'title'       => $this->getTitle(),
             'year'        => $this->getYear(),
             'description' => $this->getDescription(),
-            'imdbId'      => $this->getId(),
+            'imdbId'      => $this->getImdbId(),
         ];
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }

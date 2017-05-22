@@ -49,7 +49,7 @@ class AppContext implements Context
     public static function dbReset()
     {
 
-        self::app()->getContainer()->dbService->resetDb();
+        self::app()->getContainer()['dbService']->resetDb();
     }
 
     /**

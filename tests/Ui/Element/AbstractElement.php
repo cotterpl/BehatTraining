@@ -1,25 +1,25 @@
 <?php
 
-namespace Acme\Tests\Ui\Page;
+namespace Acme\Tests\Ui\Element;
 
-use Behat\Mink\Element\DocumentElement;
+use Behat\Mink\Element\NodeElement;
 
 /**
  * Base class for all page objects
  *
  * @package Acme\Tests\Ui\Page
  */
-abstract class AbstractPage
+abstract class AbstractElement
 {
-    /** @var DocumentElement */
+    /** @var NodeElement */
     private $pageNode;
 
     /**
      * AbstractElement constructor.
      *
-     * @param DocumentElement $node Node pointing to page
+     * @param NodeElement $node Node pointing to page
      */
-    public function __construct(DocumentElement $node)
+    public function __construct(NodeElement $node)
     {
         $this->pageNode = $node;
     }
@@ -27,9 +27,9 @@ abstract class AbstractPage
     /**
      * Main node of the page
      *
-     * @return DocumentElement
+     * @return NodeElement
      */
-    protected function getNode(): DocumentElement
+    protected function getNode(): NodeElement
     {
         return $this->pageNode;
     }

@@ -3,8 +3,8 @@ $config = [
     'db' => [
         'host' => 'localhost',
         'dbName' => 'acme',
-        'username' => 'root',
-        'password' => '',
+        'username' => 'acme',
+        'password' => 'acme',
     ],
 
     /** Root directory of the project */

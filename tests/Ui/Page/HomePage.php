@@ -3,12 +3,14 @@ declare(strict_types = 1);
 
 namespace Acme\Tests\Ui\Page;
 
+use Acme\Tests\Ui\Page\AbstractAcmePage;
+
 /**
  * Home (Index) page
  *
  * @package Acme\Tests\Ui\Page
  */
-class HomePage extends AbstractPage
+class HomePage extends AbstractAcmePage
 {
     const PATH = '/';
 
@@ -17,9 +19,9 @@ class HomePage extends AbstractPage
      *
      * @return int
      */
-    public function countLatestMovies()
+    public function countLatestMovies(): int
     {
-        $result = $this->getPageNode()->findAll('css', '.table-movie-list .tr-movie');
+        $result = $this->getNode()->findAll('css', '.table-movie-list .tr-movie');
         return count($result);
     }
 
@@ -28,6 +30,6 @@ class HomePage extends AbstractPage
      */
     public function verify(): bool
     {
-        return $this->getPageNode()->has('css', '#tables');
+        return $this->getNode()->has('css', '#tables');
     }
 }

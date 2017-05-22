@@ -22,8 +22,8 @@ class IndexController extends AbstractController
      */
     public function index($req, $res, $args)
     {
-        $results = $this->container()->movieService->latestMovies(3);
-        return $this->container()->view->render(
+        $results = $this->container()['movieService']->latestMovies(3);
+        return $this->container()['view']->render(
             $res, 'index.twig', [
                 'movieList' => $results,
             ]

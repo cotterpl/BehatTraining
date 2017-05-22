@@ -75,7 +75,7 @@ class MovieService
     public function search(string $query): array
     {
         $query = '%'.$query.'%';
-        $stmt = $this->db->getPDO()->prepare("SELECT * FROM movie WHERE title LIKE ?");
+        $stmt = $this->db->getPDO()->prepare("SELECT * FROM `movie` WHERE `title` LIKE ?");
         $stmt->execute([$query]);
         return $this->arrayToMovies($stmt->fetchAll(\PDO::FETCH_ASSOC));
 
@@ -90,7 +90,7 @@ class MovieService
      */
     public function latestMovies(int $amount): array
     {
-        $stmt = $this->db->getPDO()->prepare("SELECT * FROM movie ORDER BY year,id DESC LIMIT 0,?");
+        $stmt = $this->db->getPDO()->prepare("SELECT * FROM `movie` ORDER BY `year` DESC, `id` DESC LIMIT 0,?");
         $stmt->bindValue(1, $amount, \PDO::PARAM_INT);
         $stmt->execute();
 
@@ -105,7 +105,7 @@ class MovieService
     public function all(): array
     {
         $return = [];
-        $stmt = $this->db->getPDO()->prepare("SELECT * FROM movie");
+        $stmt = $this->db->getPDO()->prepare("SELECT * FROM `movie`");
         $stmt->execute();
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $return[] = new Movie($row);
